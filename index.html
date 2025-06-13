@@ -443,6 +443,7 @@
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -466,7 +467,7 @@
 </div>
                     </div>
                     <div class="home-image">
-                        <img src="professional photo.jpg" alt="Profile" class="profile-img">
+                        <img src="E:\photos\Mani\professional photo.jpg" alt="Profile" class="profile-img">
                     </div>
                 </div>
             </div>
@@ -499,21 +500,20 @@
                     </div>
                     <div>
                         <div class="info-card">
-                            <h3>Education & Certifications</h3>
-                            <div class="info-item">
-                                <strong>Degree:</strong> B.E. Computer Science Engineering
-                            </div>
-                            <div class="info-item">
-                                <strong>College:</strong> PSNA College of Engineering and Technology
-                            </div>
-                            <div class="info-item">
-                                <strong>Certifications:</strong>
-                            </div>
-                            <ul style="margin-left: 1rem; color: #cccccc;">
-                                <li>AWS Certified Cloud Architect</li>
-                                <li>LAHTP – LEGACY in CyberSecurity</li>
-                            </ul>
-                        </div>
+    <h3>Education</h3>
+    <div class="info-item">
+        <strong>Degree:</strong> B.E. Computer Science Engineering
+    </div>
+    <div class="info-item">
+        <strong>College:</strong> PSNA College of Engineering and Technology
+    </div>
+    <div class="info-item">
+        <strong>HSC:</strong> 12th
+    </div>
+    <div class="info-item">
+        <strong>School:</strong> Velammal Matric Higher Secondary School
+    </div>
+</div>
                         <div class="info-card">
                             <h3>Soft Skills</h3>
                             <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
@@ -659,6 +659,72 @@
     background: linear-gradient(90deg, #ff4444, #ff8c44);
     border-radius: 5px;
     transition: width 1.2s cubic-bezier(.77,0,.18,1);
+}
+</style>
+
+<!-- Certifications Section -->
+<section id="certifications" class="section">
+    <div class="container">
+        <h2 class="section-title">My <span>Certifications</span></h2>
+        <div class="certifications-grid">
+    <div class="cert-unit">
+        <span class="cert-icon" style="font-size: 4rem;"><i class="fab fa-aws"></i></span>
+        <span class="cert-title" style="font-size: 1.5rem;">AWS Certified Cloud Architect</span>
+        <span class="cert-desc" style="margin-top: 1rem; font-size: 1.1rem; color: #cccccc; text-align: center; display: block;">Demonstrates expertise in designing and deploying scalable systems on AWS cloud infrastructure.</span>
+    </div>
+    <div class="cert-unit">
+        <span class="cert-icon" style="font-size: 4rem;"><i class="fas fa-shield-alt"></i></span>
+        <span class="cert-title" style="font-size: 1.5rem;">LAHTP – LEGACY in CyberSecurity</span>
+        <span class="cert-desc" style="margin-top: 1rem; font-size: 1.1rem; color: #cccccc; text-align: center; display: block;">Certification in advanced cybersecurity practices and penetration testing methodologies.</span>
+    </div>
+</div>
+    </div>
+</section>
+
+<style>
+.certifications-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 2.5rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+.cert-unit {
+    background: #181818;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(255,68,68,0.10);
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    min-width: 320px;
+    max-width: 350px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    border: 1.5px solid rgba(255,255,255,0.10);
+    transition: transform 0.18s, box-shadow 0.18s;
+}
+.cert-unit:hover {
+    transform: scale(1.045);
+    box-shadow: 0 6px 24px rgba(255,68,68,0.13);
+    border-color: #ff4444;
+}
+.cert-icon {
+    font-size: 2rem;
+    margin-bottom: 0.7rem;
+    color: #ff4444;
+}
+.cert-title {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #fff;
+    text-align: center;
+}
+.cert-desc {
+    font-size: 1.1rem;
+    color: #cccccc;
+    text-align: center;
+    margin-top: 1rem;
 }
 </style>
 
