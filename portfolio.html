@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manikandan R - Portfolio</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .nav-links li a.active,
+        .nav-links li a:hover {
+            color: #ff4444;
+            background: rgba(255, 68, 68, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .section {
+            display: none;
+            min-height: calc(100vh - 80px);
+            padding: 4rem 0;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Section */
+        .home-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: calc(100vh - 80px);
+        }
+
+        .home-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .home-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #ff4444);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .home-content .subtitle {
+            font-size: 1.5rem;
+            color: #ff4444;
+            margin-bottom: 1rem;
+        }
+
+        .home-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #cccccc;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: #ff4444;
+            border: 2px solid #ff4444;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            background: #ff4444;
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.3);
+        }
+
+        .home-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 4px solid #ff4444;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(255, 68, 68, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ffffff;
+        }
+
+        .section-title span {
+            color: #ff4444;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card h3 {
+            color: #ff4444;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        .info-item strong {
+            color: #ff4444;
+            min-width: 120px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ff4444, #ff6666);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 68, 68, 0.1);
+        }
+
+        .project-card h3 {
+            color: #ff4444;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 68, 68, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff4444;
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
+        }
+
+        .submit-btn {
+            background: #ff4444;
+            color: #ffffff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #ff6666;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 68, 68, 0.3);
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .contact-item strong {
+            color: #ff4444;
+            margin-right: 1rem;
+            min-width: 100px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 68, 68, 0.1);
+            border: 2px solid #ff4444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff4444;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #ff4444;
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .home-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .home-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="home-section">
+                    <div class="home-content">
+                        <h1>Hello, I'm <span style="color: #ff4444;">Manikandan R</span></h1>
+                        <div class="subtitle">Software Development Engineer</div>
+                        <p>Motivated Software Development Engineer skilled in algorithms, system architecture, and full-stack development. Passionate about building user-friendly, efficient, and scalable applications with experience in modern technologies and frameworks.</p>
+                        <a href="#about" class="cta-button nav-link">More About Me</a>
+                        <div class="social-links" style="margin-top: 2rem;">
+    <a href="https://github.com/MANIKANDANR2K4" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="mailto:manikandan89767@gmail.com" title="Gmail"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/mani-kandan-r-" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+</div>
+                    </div>
+                    <div class="home-image">
+                        <img src="E:\photos\Mani\professional photo.jpg" alt="Profile" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About <span>Me</span></h2>
+                <div class="about-content">
+                    <div>
+                        <div class="info-card">
+                            <h3>Personal Info</h3>
+                            <div class="info-item">
+                                <strong>Name:</strong> Manikandan R
+                            </div>
+                            <div class="info-item">
+                                <strong>Role:</strong> Software Development Engineer
+                            </div>
+                            <div class="info-item">
+                                <strong>Experience:</strong> Full-Stack Development & Cybersecurity
+                            </div>
+                            <div class="info-item">
+                                <strong>Email:</strong> manikandan89767@gmail.com
+                            </div>
+                            <div class="info-item">
+                                <strong>Location:</strong> Madurai, Tamil Nadu, India
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-card">
+                            <h3>Education & Certifications</h3>
+                            <div class="info-item">
+                                <strong>Degree:</strong> B.E. Computer Science Engineering
+                            </div>
+                            <div class="info-item">
+                                <strong>College:</strong> PSNA College of Engineering and Technology
+                            </div>
+                            <div class="info-item">
+                                <strong>Certifications:</strong>
+                            </div>
+                            <ul style="margin-left: 1rem; color: #cccccc;">
+                                <li>AWS Certified Cloud Architect</li>
+                                <li>LAHTP – LEGACY in CyberSecurity</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h3>Soft Skills</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                                <span class="tag">Communication</span>
+                                <span class="tag">Time Management</span>
+                                <span class="tag">Creativity</span>
+                                <span class="tag">Collaboration</span>
+                                <span class="tag">Adaptability</span>
+                                <span class="tag">Problem Solving</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+    <div class="container">
+        <h2 class="section-title">My <span>Skills</span></h2>
+        <div class="skills-unified-grid">
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fab fa-python"></i></span>
+                <span class="skill-title">Python</span>
+                <span class="skill-percent">85%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fab fa-java"></i></span>
+                <span class="skill-title">Java</span>
+                <span class="skill-percent">80%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fas fa-code"></i></span>
+                <span class="skill-title">C</span>
+                <span class="skill-percent">75%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fab fa-js"></i></span>
+                <span class="skill-title">JavaScript</span>
+                <span class="skill-percent">82%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 82%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fab fa-html5"></i></span>
+                <span class="skill-title">HTML/CSS</span>
+                <span class="skill-percent">90%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fab fa-angular"></i></span>
+                <span class="skill-title">AngularJS</span>
+                <span class="skill-percent">78%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 78%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fab fa-react"></i></span>
+                <span class="skill-title">React</span>
+                <span class="skill-percent">85%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fab fa-aws"></i></span>
+                <span class="skill-title">AWS</span>
+                <span class="skill-percent">80%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fab fa-docker"></i></span>
+                <span class="skill-title">Docker</span>
+                <span class="skill-percent">75%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fas fa-database"></i></span>
+                <span class="skill-title">MySQL/PostgreSQL</span>
+                <span class="skill-percent">82%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 82%"></div></div>
+            </div>
+            <div class="skill-unit">
+                <span class="skill-icon"><i class="fas fa-user-secret"></i></span>
+                <span class="skill-title">Ethical Hacking</span>
+                <span class="skill-percent">70%</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.skills-unified-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 2.5rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+.skill-unit {
+    background: #181818;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(255,68,68,0.06);
+    padding: 1.3rem 1.6rem 1.1rem 1.6rem;
+    min-width: 200px;
+    max-width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.18s, box-shadow 0.18s;
+}
+.skill-unit:hover {
+    transform: scale(1.045);
+    box-shadow: 0 6px 24px rgba(255,68,68,0.13);
+    border-color: #ff4444;
+}
+.skill-icon {
+    font-size: 2rem;
+    margin-bottom: 0.7rem;
+    color: #ff4444;
+}
+.skill-title {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #fff;
+}
+.skill-percent {
+    font-size: 1.05rem;
+    color: #ff4444;
+    margin-bottom: 0.5rem;
+}
+.skill-bar {
+    width: 100%;
+    height: 8px;
+    background: #222;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ff4444, #ff8c44);
+    border-radius: 5px;
+    transition: width 1.2s cubic-bezier(.77,0,.18,1);
+}
+</style>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+    <div class="container">
+        <h2 class="section-title">My <span>Projects</span></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-icon"><i class="fas fa-id-card-alt"></i></div>
+                <h3>Migrant Verification System</h3>
+                <p>Developed a comprehensive migrant certification system featuring secure authentication and user-friendly dashboard for certificate verification. Built with full-stack technologies ensuring data security and seamless user experience.</p>
+                <div class="project-tags">
+                    <span class="tag"><i class="fas fa-layer-group"></i> Full-Stack</span>
+                    <span class="tag"><i class="fas fa-user-lock"></i> Authentication</span>
+                    <span class="tag"><i class="fas fa-tachometer-alt"></i> Dashboard</span>
+                    <span class="tag"><i class="fas fa-shield-alt"></i> Security</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon"><i class="fab fa-aws"></i></div>
+                <h3>AWS EC2 Deployment Security</h3>
+                <p>Designed and implemented a scalable cloud infrastructure using AWS services. Focused on access control, database provisioning, and compliance standards to ensure robust and secure deployment.</p>
+                <div class="project-tags">
+                    <span class="tag"><i class="fab fa-aws"></i> AWS</span>
+                    <span class="tag"><i class="fas fa-cloud"></i> Cloud</span>
+                    <span class="tag"><i class="fas fa-shield-alt"></i> Security</span>
+                    <span class="tag"><i class="fas fa-network-wired"></i> Infrastructure</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Responsive Web Applications</h3>
+                <p>Created multiple responsive web applications with optimized UI/UX during internship at Arsus Solutions. Focused on performance optimization and cross-browser compatibility.</p>
+                <div class="project-tags">
+                    <span class="tag"><i class="fas fa-mobile-alt"></i> Responsive</span>
+                    <span class="tag"><i class="fas fa-pencil-ruler"></i> UI/UX</span>
+                    <span class="tag"><i class="fas fa-rocket"></i> Performance</span>
+                    <span class="tag"><i class="fas fa-globe"></i> Cross-browser</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon"><i class="fas fa-user-secret"></i></div>
+                <h3>Penetration Testing Projects</h3>
+                <p>Conducted comprehensive penetration testing to identify security vulnerabilities in web applications and networks. Utilized various ethical hacking tools and methodologies during cybersecurity internship.</p>
+                <div class="project-tags">
+                    <span class="tag"><i class="fas fa-bug"></i> Penetration Testing</span>
+                    <span class="tag"><i class="fas fa-lock"></i> Cybersecurity</span>
+                    <span class="tag"><i class="fas fa-exclamation-triangle"></i> Vulnerability Assessment</span>
+                    <span class="tag"><i class="fab fa-linux"></i> Kali Linux</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.project-card {
+    position: relative;
+    background: #181818;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(255,68,68,0.06);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 32px rgba(255,68,68,0.18);
+    border-color: #ff4444;
+}
+.project-icon {
+    font-size: 2.5rem;
+    color: #ff4444;
+    margin-bottom: 0.8rem;
+}
+.project-tags {
+    margin-top: 1rem;
+}
+.project-tags .tag {
+    display: inline-block;
+    background: rgba(255,68,68,0.09);
+    color: #ff4444;
+    border-radius: 6px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.98rem;
+    margin-right: 0.4rem;
+    margin-bottom: 0.3rem;
+    transition: background 0.2s, color 0.2s;
+}
+.project-tags .tag i {
+    margin-right: 0.3em;
+}
+.project-tags .tag:hover {
+    background: #ff4444;
+    color: #fff;
+}
+</style>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Contact <span>Me</span></h2>
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <h3 style="color: #ff4444; margin-bottom: 1.5rem;">Send Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3 style="color: #ff4444; margin-bottom: 1.5rem;">Contact Information</h3>
+                        <div class="contact-item">
+                            <strong>Phone:</strong>
+                            <span>+91 7904995349</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Email:</strong>
+                            <span>manikandan89767@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Location:</strong>
+                            <span>Madurai, Tamil Nadu, India</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" title="GitHub">G</a>
+                            <a href="#" title="LinkedIn">L</a>
+                            <a href="#" title="Instagram">I</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all links and sections
+                navLinks.forEach(l => l.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked link
+                link.classList.add('active');
+                
+                // Show corresponding section
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            form.reset();
+        });
+
+        // Animate skill bars when skills section is visible
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        function animateSkills() {
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection.classList.contains('active')) {
+                skillBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 200);
+                });
+            }
+        }
+
+        // Listen for skills section activation
+        const skillsNavLink = document.querySelector('a[href="#skills"]');
+        skillsNavLink.addEventListener('click', () => {
+            setTimeout(animateSkills, 100);
+        });
+
+        // Add smooth transitions for project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
