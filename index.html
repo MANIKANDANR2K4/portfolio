@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manikandan R - Software Development Engineer Portfolio</title>
+    <title>Manikandan R - Full Stack Developer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -541,56 +541,24 @@
         }
 
         .skill-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem 1rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
+        .skill-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--primary-color);
+            transform: translateX(5px);
         }
 
         .skill-name {
             color: var(--text-primary);
             font-weight: 500;
-        }
-
-        .skill-percent {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .skill-bar {
-            height: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: var(--gradient-3);
-            border-radius: 10px;
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .skill-progress::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            font-size: 1rem;
         }
 
         /* Experience Section */
@@ -830,69 +798,12 @@
         }
 
         /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 3rem;
+           /* Contact Section */
+           .contact-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-top: 3rem;
-        }
-
-        .contact-form {
-            background: var(--bg-card);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 10px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-        }
-
-        .submit-btn {
-            background: var(--gradient-3);
-            color: var(--bg-dark);
-            padding: 14px 40px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.3);
         }
 
         .contact-info {
@@ -901,6 +812,48 @@
             border: 1px solid rgba(0, 212, 255, 0.1);
             border-radius: 20px;
             padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        .contact-item strong {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        .contact-item span {
+            color: var(--text-secondary);
         }
 
         .contact-info h3 {
@@ -947,7 +900,7 @@
             }
 
             .about-content,
-            .contact-content {
+            .about-content {
                 grid-template-columns: 1fr;
             }
 
@@ -1113,7 +1066,7 @@
                             </div>
                             <div class="info-item">
                                 <strong>LinkedIn:</strong>
-                                <span>linkedin.com/in/mani-kandan-r-</span>
+                                <span>linkedin.com/in/mani-kandan-r</span>
                             </div>
                         </div>
                         <div class="info-card fade-in">
@@ -1173,163 +1126,61 @@
                     <div class="skill-category fade-in">
                         <h3><i class="fas fa-code"></i> Languages</h3>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Java</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
+                            <span class="skill-name">Java</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">JavaScript</span>
-                                <span class="skill-percent">88%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="88"></div>
-                            </div>
+                            <span class="skill-name">JavaScript</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">SQL</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
+                            <span class="skill-name">SQL</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">HTML5</span>
-                                <span class="skill-percent">92%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="92"></div>
-                            </div>
+                            <span class="skill-name">HTML5</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">CSS3</span>
-                                <span class="skill-percent">90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90"></div>
-                            </div>
+                            <span class="skill-name">CSS3</span>
                         </div>
                     </div>
                     <div class="skill-category fade-in">
                         <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Spring Boot</span>
-                                <span class="skill-percent">82%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="82"></div>
-                            </div>
+                            <span class="skill-name">Spring Boot</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">React.js</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
+                            <span class="skill-name">React.js</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Node.js</span>
-                                <span class="skill-percent">83%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="83"></div>
-                            </div>
+                            <span class="skill-name">Node.js</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Express.js</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
+                            <span class="skill-name">Express.js</span>
                         </div>
                     </div>
                     <div class="skill-category fade-in">
                         <h3><i class="fas fa-tools"></i> Technologies & Tools</h3>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">AWS</span>
-                                <span class="skill-percent">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80"></div>
-                            </div>
+                            <span class="skill-name">AWS</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">MongoDB</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
+                            <span class="skill-name">MongoDB</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">PostgreSQL</span>
-                                <span class="skill-percent">82%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="82"></div>
-                            </div>
+                            <span class="skill-name">PostgreSQL</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">MySQL</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
+                            <span class="skill-name">MySQL</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Docker</span>
-                                <span class="skill-percent">75%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="75"></div>
-                            </div>
+                            <span class="skill-name">Docker</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Git</span>
-                                <span class="skill-percent">88%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="88"></div>
-                            </div>
+                            <span class="skill-name">Git</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Postman</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
+                            <span class="skill-name">Postman</span>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">REST APIs</span>
-                                <span class="skill-percent">87%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="87"></div>
-                            </div>
+                            <span class="skill-name">REST APIs</span>
                         </div>
                     </div>
                 </div>
@@ -1386,7 +1237,6 @@
                             <span class="tag">Express.js</span>
                             <span class="tag">React.js</span>
                             <span class="tag">Node.js</span>
-                            <span class="tag">MERN Stack</span>
                             <span class="tag">Postman</span>
                         </div>
                     </div>
@@ -1411,7 +1261,6 @@
                             <span class="tag">Express.js</span>
                             <span class="tag">React.js</span>
                             <span class="tag">Node.js</span>
-                            <span class="tag">MERN Stack</span>
                             <span class="tag">Postman</span>
                         </div>
                     </div>
@@ -1441,33 +1290,9 @@
         <!-- Contact Section -->
         <section id="contact" class="section">
             <div class="container">
+                <h2 class="section-title">Reach Me Out <span></span></h2>
                 <h2 class="section-title">Get In <span>Touch</span></h2>
                 <div class="contact-content">
-                    <div class="contact-form fade-in">
-                        <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;">Send Message</h3>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="6" required></textarea>
-                            </div>
-                            <button type="submit" class="submit-btn">
-                                <span>Send Message</span>
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
                     <div class="contact-info fade-in">
                         <h3>Contact Information</h3>
                         <div class="contact-item">
