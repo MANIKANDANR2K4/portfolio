@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manikandan R -  Software Development Engineer</title>
+    <title>Manikandan R - Full Stack Developer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -232,6 +232,22 @@
         .typing-text span {
             color: var(--primary-color);
             font-weight: 600;
+        }
+
+        /* Typing Cursor Animation */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background: var(--primary-color);
+            margin-left: 4px;
+            animation: blink 1s infinite;
+            vertical-align: baseline;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
 
         .home-content p {
@@ -1041,7 +1057,7 @@
                         <div class="greeting">Hi, my name is</div>
                         <h1>Manikandan <span class="highlight">R</span></h1>
                         <div class="typing-text">
-                            I'm a <span id="typing"></span>
+                            I'm a <span id="typing"></span><span class="typing-cursor"></span>
                         </div>
                         <p>Computer Science Engineering student with proven experience in full-stack development using JavaScript, Python, C++, and Java. Skilled in building scalable applications with modern technologies and cloud deployment.</p>
                         <div class="cta-buttons">
@@ -1488,40 +1504,47 @@
     </main>
 
     <script>
-        // Typing Animation
-        const typingTexts = ['Full Stack Developer', 'Software Engineer', 'Web Developer', 'Cloud Enthusiast'];
-        let textIndex = 0;
+        // Typing Animation with Reverse (Continuous Loop)
+        const typingText = "Software Engineer";
+        const typingElement = document.getElementById('typing');
         let charIndex = 0;
-        let isDeleting = false;
+        let isTyping = true;
+        let typingSpeed = 100; // Typing speed in milliseconds
+        let deletingSpeed = 50; // Deleting speed in milliseconds
+        let pauseTime = 2000; // Pause time after typing complete
 
         function typeText() {
-            const typingElement = document.getElementById('typing');
-            const currentText = typingTexts[textIndex];
-
-            if (isDeleting) {
-                typingElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
+            if (isTyping) {
+                // Typing forward
+                if (charIndex < typingText.length) {
+                    typingElement.textContent += typingText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeText, typingSpeed);
+                } else {
+                    // Finished typing, wait then start deleting
+                    isTyping = false;
+                    setTimeout(typeText, pauseTime);
+                }
             } else {
-                typingElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            if (!isDeleting && charIndex === currentText.length) {
-                isDeleting = true;
-                setTimeout(typeText, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % typingTexts.length;
-                setTimeout(typeText, 500);
-            } else {
-                setTimeout(typeText, isDeleting ? 50 : 100);
+                // Deleting (reverse typing)
+                if (charIndex > 0) {
+                    typingElement.textContent = typingText.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(typeText, deletingSpeed);
+                } else {
+                    // Finished deleting, wait then start typing again
+                    isTyping = true;
+                    setTimeout(typeText, 500); // Short pause before retyping
+                }
             }
         }
 
-        // Start typing animation
-        if (document.getElementById('typing')) {
-            typeText();
-        }
+        // Start typing animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                typeText();
+            }, 1500); // Start after 1.5 seconds
+        });
 
         // Navigation functionality
         const navLinks = document.querySelectorAll('.nav-link');
